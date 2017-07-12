@@ -6,7 +6,7 @@ const INITIALIZE = 'INITIALIZE_USERS';
 const CREATE     = 'CREATE_USER';
 export const REMOVE = 'REMOVE_USER';
 const UPDATE     = 'UPDATE_USER';
-const SET_CURRENT_USER = 'SET_CURRENT_USER';
+
 
 
 /* ------------   ACTION CREATORS     ------------------ */
@@ -15,7 +15,7 @@ const init  = users => ({ type: INITIALIZE, users });
 const create = user  => ({ type: CREATE, user });
 const remove = id    => ({ type: REMOVE, id });
 const update = user  => ({ type: UPDATE, user });
-const login = setUser => ({ type: SET_CURRENT_USER, setUser})
+
 
 
 /* ------------       REDUCER     ------------------ */
@@ -36,12 +36,13 @@ export default function reducer (users = [], action) {
       return users.map(user => (
         action.user.id === user.id ? action.user : user
       ));
-      case UPDATE:
 
     default:
       return users;
   }
 }
+
+
 
 
 /* ------------   THUNK CREATORS     ------------------ */
@@ -70,9 +71,4 @@ export const updateUser = (id, user) => dispatch => {
   .catch(err => console.error(`Updating user: ${user} unsuccesful`, err));
 };
 
-export const confirmIdentity = (email, password) => dispatch => {
-  axios.post('/login', {email, password})
-  .then(res => res.data)
-  .then(user => dispatch(setUser(user)))
-  .catch(err => console.error('go away loser', err))
-}
+
