@@ -25,9 +25,9 @@ class Login extends React.Component {
               />
             </div>
             <div className="form-group">
-                <label>password</label>
-                <input
-                  name="password"
+              <label>password</label>
+              <input
+                name="password"
                   type="password"
                   className="form-control"
                   required
@@ -59,7 +59,10 @@ class Login extends React.Component {
   onLoginSubmit(event) {
     const { message } = this.props;
     event.preventDefault();
-    console.log(`${message} isn't implemented yet`);
+    //event.target.email.value
+    //event.target.password.value
+    
+
   }
 }
 
