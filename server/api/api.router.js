@@ -2,7 +2,7 @@
 
 var router = require('express').Router();
 
-
+router.use('/identity', require('./identity/identity.router'))
 
 router.use('/users', require('./users/user.router'));
 
