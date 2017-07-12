@@ -23,6 +23,12 @@ app.use(session({
   saveUninitialized: false
 }));
 
+// place right after the session setup middleware
+app.use(function (req, res, next) {
+  console.log('session', req.session);
+  next();
+});
+
 app.use('/api', function (req, res, next) {
   if (!req.session.counter) req.session.counter = 0;
   console.log('*****counter****', ++req.session.counter);
